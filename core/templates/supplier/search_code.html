@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block full_container %}
+
+{% endblock %}
+{% block page_js %}
+
+<script type="text/javascript">
+var pr = angular.module("pr", [], function ($interpolateProvider) {
+        $interpolateProvider.startSymbol("{[{");
+        $interpolateProvider.endSymbol("}]}");
+});
+
+
+</script>
+{% endblock %}

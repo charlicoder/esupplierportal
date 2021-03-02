@@ -1,0 +1,51 @@
+{% extends 'subscriber/emails/notifications/base.html' %}
+
+{% block body %}
+
+<table class="outer" align="center" style="border-spacing: 0;font-family: sans-serif;color: #333333;margin: 0 auto;width: 100%;max-width: 600px;">
+            <tr>
+                <td class="one-column" style="padding: 0;">
+                    <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                        <tr>
+                            <td class="inner contents" style="padding: 10px;text-align: left;">
+                                <img src="http://test.procurementenrollment.com/static/portal/assets/images/logo.png" alt="Logo esupplier portal">
+                                <br>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="one-column" style="padding: 0;">
+                    <p class="h1">Dear {{ user.first_name }},</p>
+                    <br>
+                    <p>Thank you for registering at Procurement Enrollment!</p><br>
+
+                    <p>Please click the link below to continue the registration process, or copy the code and paste it in your browser.<br><br>
+
+                    <a href="http://{{ host }}/subscriber/registration/{{ activation_code }}/active/">{{ host }}/subscriber/registration/{{ activation_code }}/active/</a>
+                    </p>
+                    <br><br>
+                    <p style="margin: 0;font-size: 14px; font-family:sans-serif; color: #333333;">To Your Success!</p>
+                    <p style="margin: 0;font-size: 14px; font-family:sans-serif; color: #333333;">Procurement Enrollment Team</p>
+
+
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="one-column" style="padding: 0;">
+                    <table width="100%" style="border-spacing: 0;font-family: sans-serif;color: #333333;">
+                        <tr>
+                            <td class="inner contents" style="padding: 10px;text-align: left;">
+                                <p class="h1" style="margin: 0;font-size: 14px;font-weight: bold;margin-bottom: 10px;"> &copy; Powered and Developed by Cloud Custom Solutions</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+{% endblock %}

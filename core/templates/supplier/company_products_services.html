@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block container %}
+<style type="text/css">
+#search_modal {
+    position: absolute;
+    top: -150px;
+    left: -100px;
+    width: 800px;
+    height: 500px;
+    border: 2px solid #ccc;
+    background-color: #DDD;
+    z-index: 1002;
+}
+
+</style>
+	{% include "steps.html" %}
+	{% include "supplier/form/company_product_service_form.html" %}
+{% endblock %}
+
+{% block page_js %}
+<script type="text/javascript">
+
+pr.controller('CompProServiceController',['$scope', '$http', function ($scope, $http) {
+    $scope.init = function(){
+        console.log("Supplier Company Product Service controller...");
+        var sup_id = $("#id_supplier").val();
+        var url = "/supplier/profile/company/products-services/api/"+sup_id+"/"
+        
+        $http({method: 'GET', url: url}).
+            success(function(data, status, headers, config) {
+                console.log(data);
+                $scope.comp_pro_service = data;
+
+        }).error(function() {
+            console.log("no company info")
+        });
+
+        $scope.show_search_modal = false;
+    }
+    $scope.init();
+
+    $scope.ShowSearchPage = function(code) {
+        $scope.url = "/supplier/search/code/naics/"
+        $scope.show_search_modal = true;
+    }
+
+    $scope.HideMe = function() {
+        $scope.show_search_modal = false;
+    }
+
+}]);
+pr.controller('CodeSearchController',['$scope', '$http', function ($scope, $http) {
+    $scope.init = function(){
+        console.log("Supplier Company Product Service controller...");
+        var code_type = $("#id_code_type").val();
+        var url = "/supplier/product-service/code/"+code_type+"/search/"
+        console.log(code_type);
+        $http({method: 'GET', url: url}).
+            success(function(data, status, headers, config) {
+                console.log(data);
+                $scope.codes = data.results;
+
+        }).error(function() {
+            console.log("no company info")
+        });
+    }
+    $scope.init();
+
+}]);
+
+
+
+</script>
+{% endblock %}

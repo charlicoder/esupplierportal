@@ -1,0 +1,160 @@
+{% extends 'subscriber/login.html' %}
+{% load static %}
+{% block title %}eSupplier | Registration{% endblock title %}
+
+{% block body %}
+     <style>
+        .error{
+            color: #CC0000;
+            padding-top: 10px;
+        }
+
+        .error label{
+            text-align: center;
+        }
+    </style>
+    <div class="menu-toggler sidebar-toggler"></div>
+    <!-- END SIDEBAR TOGGLER BUTTON -->
+    <!-- BEGIN LOGO -->
+    <div class="logo">
+        <a href="{% url 'portal:home' %}">
+            <img src="{% static 'subscriber/assets/images/logo.png' %}" alt="" /> </a>
+    </div>
+    <!-- END LOGO -->
+    <!-- BEGIN LOGIN -->
+    <div class="content">
+
+        <!-- BEGIN REGISTRATION FORM -->
+        <form class="register-form" action="{% url 'subscriber:registration' %}" method="post">
+            <h3 class="form-title font-blue">Get started now!</h3>
+
+            {% csrf_token %}
+
+            {% if form.form.non_field_errors %}
+
+                <div class="alert alert-danger">
+                <button class="close" data-close="alert"></button>
+
+                {% for err in form.non_field_errors %}
+                    <span> {{ err }}</span>
+                {% endfor %}
+
+
+            </div>
+            {% endif %}
+
+            <div class="form-group {% if form.first_name.errors %}has-error{% endif %}">
+                <label class="control-label visible-ie8 visible-ie9">Name</label>
+
+                {{ form.first_name }}
+
+                {% if form.fist_name.errors %}
+                    <span class="help-block" id="id_first_name-error">{{ form.first_name.errors }}.</span>
+                {% endif %}
+
+            </div>
+
+
+            <div class="form-group {% if form.username.errors %}has-error{% endif %}">
+                <label class="control-label visible-ie8 visible-ie9">Username</label>
+
+                {{ form.username }}
+
+                {% if form.username.errors %}
+                    <span class="help-block" id="id_username-error">{{ form.username.errors }}.</span>
+                {% endif %}
+
+            </div>
+
+            <div class="form-group {% if form.email.errors %}has-error{% endif %}">
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                <label class="control-label visible-ie8 visible-ie9">Email</label>
+                {{ form.email }}
+
+                {% if form.email.errors %}
+                    <span class="help-block has-error" id="id_username-error">{{ form.email.errors }}.</span>
+                {% endif %}
+
+            </div>
+
+            <div class="form-group {% if form.password1.errors %}has-error{% endif %}">
+
+                <label class="control-label visible-ie8 visible-ie9">Password</label>
+                {{ form.password1 }}
+
+                {% if form.password1.errors %}
+                    <span class="help-block has-error" id="id_password1-error">{{ form.password1.errors }}.</span>
+                {% endif %}
+
+            </div>
+
+            <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
+                <label class="control-label visible-ie8 visible-ie9">Password</label>
+                {{ form.password2 }}
+                 {% if form.password2.errors %}
+                    <span class="help-block has-error" id="id_password2-error">{{ form.password2.errors }}.</span>
+                {% endif %}
+            </div>
+
+            <div class="form-group margin-top-20 margin-bottom-20">
+
+                <label class="check">
+                    <input type="checkbox" name="tnc" /> I agree to the
+                    <a href="javascript:;"> terms and  conditions</a>
+                    <label for="tnc" class="error"></label>
+                </label>
+
+                <div id="register_tnc_error"> </div>
+
+            </div>
+
+            <div class="form-actions">
+                <a href="{% url 'subscriber:login' %}" type="button" id="register-back-btn" class="btn btn-default">Back</a>
+                <button type="submit" id="register-submit-btn" class="btn blue uppercase pull-right">Register</button>
+            </div>
+
+        </form>
+        <!-- END REGISTRATION FORM -->
+
+    </div>
+    <div class="copyright">Copyright &copy; 2013 - 2015. eSupplierPortal. </div>
+{% endblock body %}
+
+{% block extra_layout_scripts %}
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script type="application/javascript">
+
+        $(document).ready(function(){
+            $(".register-form").validate({
+                rules: {
+                    tnc: {
+                        required:true
+                    },
+                    first_name: {
+                        required:true ,
+                        focus:true
+                    },
+                    email: {
+                        required: true,
+                        email:true
+                    },
+                },
+                messages: {
+                    tnc:{
+                        required:'Accept the Terms and Conditions'
+                    },
+                    first_name: {
+                        required:'This field is required'
+                    },
+                    email: {
+                        required: "This field is required",
+                        email: "Enter a valid email address.\r\tex: hello@abc.com",
+                    }
+                }
+            });
+        })
+
+    </script>
+
+
+{% endblock %}

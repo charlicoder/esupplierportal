@@ -1,0 +1,244 @@
+<div class="row" ng-controller="SupplierProfileController">
+<div class="col-md-10">
+	<form novalidate name="profile_form" action="/supplier/profile/info/" method="post">{% csrf_token %}
+	<input type="hidden" name="user" id="id_user" value="{{user.id}}">
+	<input type="hidden" name="supplier" id="id_supplier" value="{{supplier.id}}">
+		<table class="table">
+		<tbody>
+			<tr>
+				<th width="200"><label for="salutation">* Salutation</label></th>
+				<td>
+					<select class="form-control" id="salutation" ng-model="supplier.salutation" name="salu" required>
+						{% for sal in salutations %}
+							<option value="{{sal.0}}" >{{sal.1}}</option>
+						{% endfor %}
+					</select>
+					<input type="hidden" class="form-control" name="salutation" value="{[{supplier.salutation}]}">
+					<div ng-show="profile_form.$dirty && profile_form.salutation.$error.required && profile_form.salutation.$touched">
+						<p  class="bg-warning">Please select your salutation.</p>
+					</div> 
+				</td>
+			</tr>
+			<tr>
+				<th><label for="first_name">* First Name</label></th>
+				<td>
+
+					<input type="text" id="id_first_name" ng-model="supplier.first_name" ng-pattern="/^[ a-zA-Z0-9]+$/" ng-minlength="3" ng-maxlength="20"
+                           name="first_name" class="form-control" value="{[{supplier.first_name}]}" required autocomplete="off">
+
+                    <div class="error-msgs" ng-messages="profile_form.first_name.$error" ng-show="profile_form.$dirty && profile_form.first_name.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your first name</span>
+                        <span ng-message="minlength" class="label label-danger">First name should be at least 3 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">First name should be less than 20 characters</span>
+                        <span ng-message="pattern" class="label label-danger">Only alpha characters are accepted</span>
+
+                    </div>
+
+
+				</td>
+			</tr>
+			<tr>
+				<th><label for="last_name">* Last Name</label></th>
+				<td>
+					<input type="text" id="_id_last_name" name="last_name" ng-pattern="/^[ a-zA-Z0-9]+$/" ng-minlength="3" ng-maxlength="20"
+                           ng-model="supplier.last_name" class="form-control" value="{[{supplier.last_name}]}" required autocomplete="off">
+
+					  <div class="error-msgs" ng-messages="profile_form.last_name.$error" ng-show="profile_form.$dirty && profile_form.last_name.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your last name</span>
+                        <span ng-message="minlength" class="label label-danger">Last name should be at least 3 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">Last name should be less than 20 characters</span>
+                        <span ng-message="pattern" class="label label-danger">Only alpha characters are accepted</span>
+
+                    </div>
+
+				</td>
+			</tr>
+			<tr>
+				<th><label for="position">* Position</label></th>
+				<td>
+					<input type="text" id="id_position" name="position" class="form-control"  ng-pattern="/^[ a-zA-Z0-9]+$/" ng-minlength="3" ng-maxlength="20" ng-model="supplier.position" value="{[{supplier.position}]}" autocomplete="off" required>
+
+					  <div class="error-msgs" ng-messages="profile_form.position.$error" ng-show="profile_form.$dirty && profile_form.last_name.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your position</span>
+                        <span ng-message="minlength" class="label label-danger">"Should be at least 3 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 20 characters</span>
+                        <span ng-message="pattern" class="label label-danger">Only alpha characters are accepted</span>
+
+                    </div>
+
+				</td>
+			</tr>
+			<tr>
+				<th><label for="phone_number">* Phone Number</label></th>
+				<td>
+					<input type="text" id="id_phone_number" name="phone_number" ng-pattern="/^(?:1-?)?(\d{3})[-\.]?(\d{3})[-\.]?(\d{4})$/" ng-model="supplier.phone_number" class="form-control" value="{[{supplier.phone_number}]}" autocomplete="off" required>
+
+					<div class="error-msgs" ng-messages="profile_form.phone_number.$error" ng-show="profile_form.$dirty && profile_form.phone_number.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your phone</span>
+                        <span ng-message="pattern" class="label label-danger">Phone numbers must be in XXX-XXX-XXXX format.</span>
+
+                    </div>
+
+				</td>
+			</tr>
+			<tr>
+				<th><label for="fax_number">Fax Number</label></th>
+				<td>
+					<input type="text" id="id_fax_number" name="fax_number" ng-model="supplier.fax_number" ng-pattern="/^(?:1-?)?(\d{3})[-\.]?(\d{3})[-\.]?(\d{4})$/" class="form-control" value="{[{supplier.fax_number}]}" autocomplete="off">
+
+                    <div class="error-msgs" ng-messages="profile_form.fax_number.$error" ng-show="profile_form.$dirty && profile_form.fax_number.$touched">
+                        <span ng-message="pattern" class="label label-danger">Fax numbers must be in XXX-XXX-XXXX format.</span>
+
+                    </div>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="cell_number">* Cell Number</label></th>
+				<td>
+					<input type="text" id="id_cell_number" name="cell_number" ng-model="supplier.cell_number" ng-pattern="/^(?:1-?)?(\d{3})[-\.]?(\d{3})[-\.]?(\d{4})$/" class="form-control" value="{[{supplier.cell_number}]}" required autocomplete="off">
+
+					<div class="error-msgs" ng-messages="profile_form.cell_number.$error" ng-show="profile_form.$dirty && profile_form.cell_number.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your cell phone</span>
+                        <span ng-message="pattern" class="label label-danger">Cell numbers must be in XXX-XXX-XXXX format.</span>
+
+                    </div>
+
+				</td>
+			</tr>
+			<tr>
+				<th><label for="contact_email">* Contact Email</label></th>
+				<td>
+					<input type="email" id="id_contact_email" name="contact_email" ng-model="supplier.contact_email" class="form-control" value="{[{supplier.contact_email}]}" required autocomplete="off">
+
+					<div class="form-group" class="has-error" ng-messages="profile_form.contact_email.$error" ng-show="profile_form.$dirty && profile_form.contact_email.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your email</span>
+                        <span ng-message="email" class="label label-danger">This needs to be a valid email</span>
+                    </div>
+
+
+				</td>
+			</tr>
+			<tr>
+				<th><label for="contact_address">Contact Address</label></th>
+				<td>
+					<textarea ng-maxlength="100" value="{[{supplier.contact_address}]}">
+						
+					</textarea>
+
+                    <div class="form-group" class="has-error" ng-messages="profile_form.contact_address.$error" ng-show="profile_form.$dirty && profile_form.contact_address.$touched">
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 20 characters</span>
+                    </div>
+
+				</td>
+			</tr>
+			<tr>
+				<th><label for="country">* Country</label></th>
+				<td>
+
+                    <select class="form-control" id="id_country" ng-model="supplier.country" name="country" required autocomplete="off">
+
+						{% include 'supplier/form/countries.html' %}
+
+					</select>
+
+                    <div class="form-group" class="has-error" ng-messages="profile_form.country.$error" ng-show="profile_form.$dirty && profile_form.country.$touched">
+                        <span ng-message="required" class="label label-warning">Please select your country</span>
+                    </div>
+
+
+					<input type="hidden" class="form-control" name="country" value="{[{supplier.country}]}">
+
+				</td>
+			</tr>
+			<tr>
+				<th><label for="state">* State</label></th>
+				<td>
+
+                    <select class="form-control" id="id_state" ng-model="supplier.state" name="state" required autocomplete="off">
+
+						{% include 'supplier/form/us_states.html' %}
+
+					</select>
+
+                    <div class="form-group" class="has-error" ng-messages="profile_form.state.$error" ng-show="profile_form.$dirty && profile_form.state.$touched">
+                        <span ng-message="required" class="label label-warning">Please select your state</span>
+                    </div>
+
+
+					<input type="hidden" class="form-control" name="state" value="{[{supplier.state}]}">
+
+				</td>
+			</tr>
+			<tr>
+				<th><label for="city">* City</label></th>
+				<td>
+					<input type="text" id="id_city" name="city" class="form-control" ng-pattern="/^[ a-zA-Z0-9]+$/"  ng-minlength="2" ng-maxlength="20" ng-model="supplier.city" value="{[{supplier.city}]}" required autocomplete="off">
+
+
+                    <div class="error-msgs" ng-messages="profile_form.city.$error" ng-show="profile_form.$dirty && profile_form.city.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your city</span>
+                        <span ng-message="minlength" class="label label-danger">should be at least 2 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">should be less than 20 characters</span>
+                        <span ng-message="pattern" class="label label-danger">Only alpha characters are accepted</span>
+
+                    </div>
+
+
+
+				</td>
+			</tr>
+			<tr>
+				<th><label for="id_zip_code">* Zip Code</label></th>
+				<td>
+					<input type="text" id="id_zip_code" name="zip_code" ng-model="supplier.zip_code" class="form-control" ng-pattern="/^\d{5}(?:-\d{4})?$/" value="{[{supplier.zip_code}]}" required autocomplete="off">
+
+					<div class="error-msgs" ng-messages="profile_form.zip_code.$error" ng-show="profile_form.$dirty && profile_form.zip_code.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter zip code</span>
+                        <span ng-message="pattern" class="label label-danger">Enter a zip code in the format XXXXX or XXXXX-XXXX.</span>
+                    </div>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="method_of_notification">Method Of Notification</label></th>
+				<td>
+					<input type="radio" name="notification" value="0" ng-model="supplier.method_of_notification"> Both
+					<input type="radio" name="notification"  value="1" ng-model="supplier.method_of_notification"> SMS Only
+					<input type="radio" name="notification"  value="2" ng-model="supplier.method_of_notification"> Email Only
+					
+					<input type="hidden" id="id_method_of_notification" name="method_of_notification" value="{[{supplier.method_of_notification}]}"> 
+
+					<div ng-show="profile_form.$dirty && profile_form.notification.$error.required">
+						<p class="bg-danger">Please your prefered notification method</p>
+					</div>
+
+				</td>
+			</tr>
+			<tr>
+				<th colspan="2" class="bg-danger">
+					Your personal choice
+				</th>
+			</tr>
+			<tr>
+				<th><label for="preferred_password">Your preferred password</label></th>
+				<td>
+					<input type="password" id="id_preferred_password" name="preferred_password" ng-model="supplier.preferred_password" class="form-control" value="{[{supplier.preferred_password}]}" autocomplete="off"> 
+
+					<div ng-show="profile_form.$dirty && profile_form.preferred_password.$error.required && profile_form.preferred_password.$touched">
+						<p class="bg-danger">Please your prefered notification method</p>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="2">
+					<button class="btn btn-primary" ng-disabled="profile_form.$invalid">Save & Continue</button>
+				</th>
+			</tr>
+		</tfoot>
+
+		</table>
+	</form>
+</div>
+</div>
+

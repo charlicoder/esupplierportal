@@ -1,0 +1,230 @@
+a {
+    color: #00aeef;
+}
+
+a:hover {
+    color: #333;
+}
+
+.showcase a:hover{
+	color: #ffffff;
+}
+
+img {
+    max-width: 100%;
+}
+
+.page-header .page-header-top, .page-header {
+    height: 100px;
+	background: #ffffff;
+}
+
+.page-header .page-header-top .container{
+	width: 100%;
+}
+
+.navbar-nav {
+	padding: 25px 0px;
+}
+
+.active{
+	font-weight: 600;
+}
+
+.showcase{
+	background-color: #78bbe6;
+	color: #FFF;
+}
+
+.homepage .showcase{
+	padding: 140px 0;
+	background-color: transparent;
+}
+
+.homepage .showcase input{
+	height: 52px;
+	width: 320px;
+	font-size: 16px;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.showcase .btn.btn-lg{
+	padding: 12px 96px 10px;
+}
+
+.homepage .showcase .form-group{
+	margin-left: 8px;
+	margin-right: 8px;
+	max-width: 320px;
+	vertical-align: top;
+}
+
+.page-header {
+    background-color: transparent;
+}
+
+#top-wrapper{
+	  background: url("../images/showcase-bg3.jpg") #78bbe6 no-repeat center center; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;	
+}
+
+.d-container p,
+.d-container ul{
+	font-size: 16px;
+	font-weight: normal;
+	text-align: left;
+}
+
+.orange{
+	background: #FFA500;
+	color: #FFFFFF;
+}
+
+.orange:hover, .orange:active, .orange:focus{
+	background-color: #E08B12;
+	color: #ffffff;
+}
+
+.page-content {
+    padding: 0;
+}
+
+.theme-font{
+	color: #1294d1 !important;
+}
+
+.bg-green, .bg-hover-green:hover{
+	float: left;
+	width: 100%;
+	background: #99cc33;
+}
+
+.bg-orange, .bg-hover-orange:hover{
+	float: left;
+	width: 100%;
+	background: #f79100;
+}
+
+.bg-blue, .bg-hover-blue:hover{
+	overflow: hidden;
+}
+
+.bg-white, .bg-hover-white:hover{
+	overflow: hidden;
+}
+
+.color-white{
+	color: #fff;
+}
+
+.has-icon-left{
+	line-height: 70px;
+}
+
+.cta-bottom{
+	padding: 30px 0;
+}
+
+.footer-menu.nav-pills > li > a, .nav-tabs > li > a, .page-prefooter a{
+	color: #ffffff;
+}
+
+.footer-menu.nav > li > a:focus, .footer-menu.nav > li > a:hover ,
+.page-prefooter a:hover, .page-prefooter a:active, .page-prefooter a:focus{
+    text-decoration: none;
+    background-color: transparent;
+	color: #3598dc;
+}
+
+.logo-footer{
+	max-width: 100px;
+	margin-bottom: 15px;
+}
+
+.page-prefooter h2{
+	color: #747b83;
+}
+
+.signup-top a{
+	color: #FFF;
+	background: #f79100;
+	margin-right: 10px;
+}
+
+.nav > li.signup-top > a:focus, .nav > li.signup-top > a:hover{
+	color: #ffffff;
+	background-color: #e08b12;
+}
+
+.login-top a{
+	color: #FFF;
+	background: #00aeef;
+	margin-left: 10px;
+}
+
+.nav > li.login-top > a:focus, .nav > li.login-top > a:hover{
+	color: #ffffff;
+	background-color: #217EBD;
+}
+
+.btn.blue:not(.btn-outline) {
+    color: #FFF;
+    background-color: #00aeef;
+    border-color: #00aeef;
+}
+
+.btn{
+	border-radius: 30px;
+}
+
+.navbar-toggle{
+	margin-top: 32px;
+	margin-right: 0px;
+	border: 2px solid #038dcf;
+}
+
+.navbar-toggle .icon-bar{
+	background: #0a92d2;
+}
+
+.price-table-pricing > h3 > .cents-right{
+	font-size: 24px;
+	position: absolute;
+	margin-right: -15px;
+}
+
+.pricing-content-1 .price-table-content{
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.pricing-features-heading{
+	padding: 15px;
+}
+
+.check-list span{
+	margin-right: 10px;
+}
+
+.check-list p{
+	margin: 5px 0;
+}
+
+#full-width{
+	  background: url("../images/fullwidth-bg.jpg") no-repeat center center; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+}
+
+.page-header .page-header-top .page-logo .logo-default{
+	margin: 20px 0px 0px;
+}

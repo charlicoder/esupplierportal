@@ -1,0 +1,86 @@
+{% extends 'subscriber/base.html' %}
+
+{% block title %}eSupplier | User Login{% endblock title %}
+{% block body_classes %}login{% endblock body_classes %}
+
+{% block extra_css %}
+    <link href="{{ STATIC_URL }}subscriber/assets/pages/login.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}subscriber/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}subscriber/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+{% endblock extra_css %}
+
+
+{% block body %}
+    <div class="menu-toggler sidebar-toggler"></div>
+    <!-- END SIDEBAR TOGGLER BUTTON -->
+    <!-- BEGIN LOGO -->
+    <div class="logo">
+        <a href="{% url 'home' %}">
+            <img src="{{ STATIC_URL }}subscriber/assets/images/logo.png" alt="" /> </a>
+    </div>
+    <!-- END LOGO -->
+    <!-- BEGIN LOGIN -->
+    <div class="content">
+
+        <!-- BEGIN LOGIN FORM -->
+        <form class="login-form" action="{% url 'subscriber:verify_otp' %}" method="post">
+            {% csrf_token %}
+
+            <h3 class="form-title font-blue">Hi {{request.user|title}}</h3>
+
+            <div class="alert alert-danger display-hide">
+                <button class="close" data-close="alert"></button>
+                <span> Enter OTP </span>
+            </div>
+			<p>Let's make sure it's really you. We've just sent a text message with a fresh verification code to the phone number ending in {{partial_phone_no}}.</br>
+				Click.<a href="{% url 'subscriber:resend_otp' %}"> here</a> to resend verification code.</p>
+			
+            {% if form.errors %}
+             <div class="alert alert-danger">
+                <button class="close" data-close="alert"></button>
+
+                {% if form.otp.errors %}
+                    <span> {{ form.otp.errors }}</span>
+                {% endif %}
+
+            </div>
+
+            {% endif %}
+
+            <div class="form-group ">
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                <label class="control-label visible-ie8 visible-ie9">Verify OTP</label>
+                {{ form.otp }}
+            </div>
+
+
+
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue uppercase">Verify</button>
+            </div>
+
+
+        </form>
+        <a href="{% url 'subscriber:logout' %}">Logout</a>
+        <!-- END LOGIN FORM -->
+
+
+        <!-- BEGIN FORGOT PASSWORD FORM -->
+      {% comment %}  <form class="forget-form" action="#" method="post">
+            <h3 class="font-blue">Forget Password ?</h3>
+            <p> Enter your e-mail address below to reset your password. </p>
+            <div class="form-group">
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
+            <div class="form-actions">
+                <button type="button" id="back-btn" class="btn btn-default">Back</button>
+                <button type="submit" class="btn blue uppercase pull-right">Submit</button>
+            </div>
+        </form>{% endcomment %}
+        <!-- END FORGOT PASSWORD FORM -->
+
+
+    </div>
+    <div class="copyright">Copyright &copy; 2013 - 2015. eSupplierPortal. </div>
+{% endblock body %}
+

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block container %}
+	{% include "steps.html" %}
+
+	{% include "supplier/comp_cert_form.html" %}	
+
+{% endblock %}
+
+{% block page_js %}
+<script type="text/javascript">
+
+
+pr.controller('CompCertController',['$scope', '$http', function ($scope, $http) {
+    $scope.init = function(){
+        console.log("Supplier Company cert controller...");
+        var sup_id = $("#id_supplier").val();
+        var url = "/supplier/profile/company/certification/api/"+sup_id+"/"
+        $http({method: 'GET', url: url}).
+            success(function(data, status, headers, config) {
+                console.log(data);
+                $scope.certs = data;
+
+                for(i=0; i<$scope.certs.length; i++) {
+                	var cert_id = $scope.certs[i].id;
+                	var cert = $("tr#"+cert_id);
+                	cert.find("input[name=cert_number]").val($scope.certs[i].company_cert.cert_number);
+                	cert.find("input[name=category]").val($scope.certs[i].company_cert.category);
+                	cert.find("input[name=certification_date]").val($scope.certs[i].company_cert.certification_date);
+                	cert.find("input[name=expire_date]").val($scope.certs[i].company_cert.expire_date);
+                	cert.find("input[name=certificate_duration]").val($scope.certs[i].company_cert.certificate_duration);
+                	cert.find("span[class=file_name]").text($scope.certs[i].company_cert.upload_certificate);
+                	
+                }
+                
+        }).error(function() {
+            console.log("no company info")
+        });
+    }
+    $scope.init();
+
+}]);
+
+</script>
+{% endblock %}

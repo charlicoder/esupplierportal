@@ -1,0 +1,124 @@
+<div class="row" ng-controller="CompProServiceController">
+<div class="col-md-12">
+	<form novalidate name="comp_pro_service" action="/supplier/profile/company/products-services/" method="post">{% csrf_token %}
+	<input type="hidden" name="user" id="id_user" value="{{user.id}}">
+	<input type="hidden" name="supplier" id="id_supplier" value="{{ supplier.id }}">
+    <input type="hidden" name="company" id="id_company" value="{{ company.id }}">
+		<table class="table">
+		<tbody>
+			<tr>
+				
+				<td>
+				<label for="id_naics_code">NAICS Code</label>
+				<div style="text-align:right;">
+					You can manually input the code in the space below or 
+					<a ng-model="naics" ng-click='ShowSearchPage(naics)'>click here to search</a>
+				</div>
+				<textarea id="id_naics_code" name="naics_code" ng-model="comp_pro_service.naics_code" class="form-control" required autocomplete="off">
+					
+				</textarea>
+				<span>Note: codes are separated by comma only</span>
+					
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<label for="id_sic_code">SIC code</label>
+				<div style="text-align:right;">
+					You can manually input the code in the space below or 
+					<a href="">click here to search</a>
+				</div>
+				<textarea id="id_sic_code" name="sic_code" ng-model="comp_pro_service.sic_code" class="form-control" required autocomplete="off">
+					
+				</textarea>
+				<span>Note: codes are separated by comma only</span>
+					
+				</td>
+			</tr>
+			<tr>
+				
+				<td>
+				<label for="id_unspsc_code">UNSPSC Code</label>
+				<div style="text-align:right;">
+					You can manually input the code in the space below or 
+					<a href="">click here to search</a>
+				</div>
+				<textarea id="id_unspsc_code" name="unspsc_code" ng-model="comp_pro_service.unspsc_code" class="form-control"  placeholder="Please put 'N/A' if no value available" required autocomplete="off">
+					
+				</textarea>
+				<span>Note: codes are separated by comma only</span>
+
+				</td>
+			</tr>
+            <tr>
+				
+				<td>
+				<label for="id_nigp_code">NIGP code</label>
+				<div style="text-align:right;">
+					You can manually input the code in the space below or 
+					<a href="">click here to search</a>
+				</div>
+				<textarea id="id_nigp_code" name="nigp_code" ng-model="comp_pro_service.nigp_code" class="form-control"  placeholder="Please put 'N/A' if no value available" required autocomplete="off">
+					
+				</textarea>
+				<span>Note: codes are separated by comma only</span>
+					
+					
+				</td>
+			</tr>
+            <tr>				
+				<td>
+				<label for="id_cage_code">CAGE code</label>
+				<div style="text-align:right;">
+					You can manually input the code in the space below or 
+					<a href="">click here to search</a>
+				</div>
+					<textarea id="id_cage_code" name="cage_code" ng-model="comp_pro_service.cage_code" class="form-control"  placeholder="Please put 'N/A' if no value available" required autocomplete="off">
+						
+					</textarea>
+					<span><b>Note</b>: <i>codes are separated by comma only</i></span>
+						
+				</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="2">
+					<button class="btn btn-primary">Save & Continue</button>
+				</th>
+			</tr>
+		</tfoot>
+
+		</table>
+	</form>
+</div>
+
+<div id='search_modal' ng-show="show_search_modal" ng-blur="HideMe()">
+	<input type="hidden" id="id_code_type" value="{{code_type}}">
+	<table class="table">
+		<tr>
+			<th>#</th>
+			<th>Select</th>
+			<th>Common Keywords</th>
+			<th>{{ code_type|upper }} code</th>
+			<th>Title</th>
+		</tr>
+		<tr ng-repeat="code in codes">
+			<td>{[{$index}]}</td>
+			<td>
+				<input type="checkbox" name="code" value="{[{ code.code }]}">
+			</td>
+			<td>
+				{[{ code.common_keywords }]}
+			</td>
+			<td>
+				{[{ code.code }]}
+			</td>
+			<td>
+				{[{ code.title }]}
+			</td>
+		</tr>
+	</table>
+</div>
+
+</div>

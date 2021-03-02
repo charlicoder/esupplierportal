@@ -1,0 +1,13 @@
+Dear {{ user.first_name }},
+
+Thank you for registering at Procurement Enrollment!</p>
+
+Please click the link below to continue the registration process, or copy the code and paste it in your browser.
+
+{{ host }}/subscriber/registration/{{ activation_code }}/active/
+
+To Your Success!
+
+Procurement Enrollment Team
+
+Powered and Developed by Cloud Custom Solutions

@@ -1,0 +1,142 @@
+{% extends 'portal/base/body.html' %}
+
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.5
+Version: 4.5.1
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+{% block extra_css %}
+				<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>Pricing | eSupplier</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta content="" name="description" />
+        <meta content="" name="author" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.2.3/css/simple-line-icons.css">
+        <link href="{{ STATIC_URL }}portal//assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}portal//assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}portal//assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}portal//assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+		<link href="{{ STATIC_URL }}portal//assets/pages/css/pricing.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}portal//assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+        <!-- END GLOBAL MANDATORY STYLES -->
+        <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="{{ STATIC_URL }}portal//assets/global/css/components-md.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="{{ STATIC_URL }}portal//assets/global/css/plugins-md.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME GLOBAL STYLES -->
+        <!-- BEGIN PAGE LEVEL STYLES -->
+        <link href="{{ STATIC_URL }}portal//assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
+        <!-- END PAGE LEVEL STYLES -->
+        <!-- BEGIN THEME LAYOUT STYLES -->
+        <link href="{{ STATIC_URL }}portal//assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ STATIC_URL }}portal//assets/layouts/layout3/css/themes/default.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="{{ STATIC_URL }}portal//assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <!-- END THEME LAYOUT STYLES -->
+		
+		<!-- eSupplier CSS -->
+		<link href="{{ STATIC_URL }}portal/css/style.css" rel="stylesheet" type="text/css" />
+		<link href="{{ STATIC_URL }}portal/css/responsive.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="favicon.ico" />
+       <link href="{{ STATIC_URL }}portal/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
+{% endblock extra_css %} 
+	</head>
+    <!-- END HEAD -->
+{% block body_content %}
+{% block body %}
+{% block page_container %}
+<body class="{% block body_classes %} page-container-bg-solid page-boxed page-md {% endblock body_classes %}">
+	        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <!-- BEGIN PAGE CONTENT BODY -->
+                <div class="page-content">
+					<div class="showcase text-center">
+						<div class="container">
+                            <div class="row margin-bottom-40">
+                                <div class="col-md-12">
+                                    <h2>Contact Us</h2>
+                                    <p class="no-margin">At Supplier Registration Concierge, we pride ourselves on providing timely, friendly, and accurate customer service. If you have any questions, comments, or technical issues, please contact us and our helpful staff will aid you immediately.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <div class="container">
+                        <!-- BEGIN PAGE CONTENT INNER -->
+                        <div class="page-content-inner">
+                            <!-- BEGIN CONTACT US FORM -->
+							<div class="row">
+								<div class="col-md-6 col-md-offset-3 margin-bottom-20">
+									<div class="">
+										<div class="c-contact">
+											<div class="c-content-title-1 text-center">
+												<p class="c-font-lowercase">Please fill out all the fields.</p>
+											</div>
+											<form action="#">
+												<div class="form-group">
+													<input type="text" placeholder="Your Name" class="form-control input-md"> 
+												</div>
+												<div class="form-group">
+													<input type="text" placeholder="Company Name" class="form-control input-md"> 
+												</div>
+												<div class="form-group">
+													<input type="text" placeholder="Email" class="form-control input-md"> 
+												</div>
+												<div class="form-group">
+													<textarea rows="8" name="message" placeholder="Write comment here ..." class="form-control input-md"></textarea>
+												</div>
+												<button type="submit" class="btn orange">Submit</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+
+                            <!-- END CONTACT US FORM -->
+							
+                        </div>
+                        <!-- END PAGE CONTENT INNER -->
+                    </div>
+					<div class="cta-bottom bg-orange">
+						<div class="container">
+							<div class="col-sm-9 col-xs-12 color-white">
+								<h4>Ready to connect with your buyers using eSupplier Portal</h4>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<button type="button" class="btn btn-lg btn-default">GET STARTED</button>
+							</div>
+						</div>
+					</div>
+                </div>
+                <!-- END PAGE CONTENT BODY -->
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END CONTAINER -->
+   </body>
+
+{% endblock page_container %}
+{% endblock body %}
+{% endblock body_content %}
+
+       
+
+</html>

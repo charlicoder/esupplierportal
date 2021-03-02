@@ -1,0 +1,144 @@
+<div class="row" ng-controller="CompLicenseController">
+<div class="col-md-12">
+	<form novalidate name="comp_license_form" action="/supplier/profile/company/licenses/" method="post" enctype="multipart/form-data">{% csrf_token %}
+	<input type="hidden" name="user" id="id_user" value="{{user.id}}">
+	<input type="hidden" name="supplier" id="id_supplier" value="{{ supplier.id }}">
+    <input type="hidden" name="company" id="id_company" value="{{ company.id }}">
+		<table class="table">
+		<tbody>
+			<tr>
+				<th width="200"><label for="id_insurance_limit">Insurance Limit</label></th>
+				<td>
+					<input type="text" id="id_insurance_limit" name="insurance_limit" ng-model="comp_license.insurance_limit" class="form-control" value="{[{comp_license.insurance_limit}]}" required autocomplete="off"> 
+
+					<div ng-show="comp_license_form.$dirty && comp_license_form.insurance_limit.$error.required && comp_license_form.insurance_limit.$touched">
+						<p  class="bg-warning">Please enter Insurance limit.</p>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="id_expiration_date">Expiration date</label></th>
+				<td>
+					<input type="text" id="id_expiration_date" name="expiration_date" ng-model="comp_license.expiration_date" class="form-control datetime" placeholder="Please put 'N/A' if no value available" value="{[{comp_license.expiration_date}]}" required autocomplete="off"> 
+
+					<div ng-show="comp_license_form.$dirty && comp_license_form.expiration_date.$error.required && comp_license_form.expiration_date.$touched">
+						<p  class="bg-warning">Please select Expiration date.</p>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="id_insurance_provider">Insuration provider</label></th>
+				<td>
+					<input type="text" id="id_insurance_provider" name="insurance_provider" ng-model="comp_license.insurance_provider" class="form-control" placeholder="Please put 'N/A' if no value available" value="{[{comp_license.insurance_provider}]}" required autocomplete="off"> 
+
+					<div ng-show="comp_license_form.$dirty && comp_license_form.insurance_provider.$error.required && comp_license_form.insurance_provider.$touched">
+						<p  class="bg-warning">Please enter your Insuration provider.</p>
+					</div>
+
+				</td>
+			</tr>
+			<tr>
+				<th><label for="id_business_license">Business License</label></th>
+				<td>
+					<input type="file" id="id_business_license" name="business_license"  class="form-control" value="{[{comp_license.business_license}]}">
+					<span ng-show="show_file_name">
+						{[{comp_license.business_license}]} <a ng-click="removeLicense()">x</a>
+					</span>
+						
+					
+				</td>
+			</tr>
+			<tr>
+				<th><label for="id_geographical_service_area">Geographical service area</label></th>
+				<td>
+					<div id="id_geographical_service_area">
+						<input type="checkbox" value="local" name="geographical_service_area"> Local
+						<input type="checkbox" value="regional" name="geographical_service_area"> Regional
+						<input type="checkbox" value="national" name="geographical_service_area"> National
+						<input type="checkbox" value="international" name="geographical_service_area"> International
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<th><label for="id_has_online_catalog">Has online catalog?</label></th>
+				<td>
+                    <input type="radio" name="online_catalog" id="id_has_online_catalog_1" ng-model="comp_license.has_online_catalog" value="1"> Yes
+					<input type="radio" name="online_catalog" id="id_has_online_catalog_0" ng-model="comp_license.has_online_catalog" value="0"> No
+					<input type="hidden" name="has_online_catalog" value="{[{comp_license.has_online_catalog}]}">
+				</td>
+			</tr>
+            <tr>
+				<th><label for="id_can_sell_online">Can sell online?</label></th>
+				<td>
+                    <input type="radio" name="sell_online" id="id_can_sell_online_1" ng-model="comp_license.can_sell_online" value="1"> Yes
+					<input type="radio" name="sell_online" id="id_can_sell_online_0" ng-model="comp_license.can_sell_online" value="0"> No
+					<input type="hidden" name="can_sell_online" value="{[{comp_license.can_sell_online}]}">
+				</td>
+			</tr>
+            <tr>
+                <th><label for="id_accepts_credit_card">Accepts credit card?</label></th>
+                <td>
+                    <input type="radio" name="can_accepts_credit_card" id="id_accepts_credit_card_1" ng-model="comp_license.accepts_credit_card" value="1"> Yes
+					<input type="radio" name="can_accepts_credit_card" id="id_accepts_credit_card_0" ng-model="comp_license.accepts_credit_card" value="0"> No
+					<input type="hidden" name="accepts_credit_card" value="{[{comp_license.accepts_credit_card}]}">
+                </td>
+            </tr>
+            <tr>
+                <th><label for="id_is_edit_capable">Is Edit capable?</label></th>
+                <td>
+                    <input type="radio"  name="edit_capable" id="id_is_edit_capable_1" ng-model="comp_license.is_edit_capable" value="1"> Yes
+					<input type="radio"  name="edit_capable" id="id_is_edit_capable_0" ng-model="comp_license.is_edit_capable" value="0"> No
+					<input type="hidden" name="is_edit_capable" value="{[{comp_license.is_edit_capable}]}">
+                </td>
+            </tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="2">
+					<button class="btn btn-primary">Save</button>
+				</th>
+			</tr>
+		</tfoot>
+
+		</table>
+	</form>
+	<hr />
+
+	<table class="table">
+		<thead>
+			<tr>
+				<td>Certificate Title</td>
+				<td>Certificate Description</td>
+				<td>Upload Certificate</td>
+				<td>Action</td>
+			</tr>
+		</thead>
+		<tbody id="certificate_list">
+			<tr ng-repeat="cert in certificates">
+				<td>
+					<input type="text" class="form-control" name="title[{[{$index}]}]" value="{[{cert.title}]}">
+				</td>
+				<td>
+					<input type="text" class="form-control" name="description[{[{$index}]}]" value="{[{cert.description}]}">
+				</td>
+				<td>
+					<input type="file" class="form-control" name="upload_file[ {[{$index}]} ]" value="{[{cert.upload_file}]}">
+				</td>
+				<td>
+					<a href="" class="btn">view</a>
+				</td>
+				
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>
+					<a ng-click="addMoreCert()" class="btn btn-primary">Add More</a>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
+</div>
+</div>
+

@@ -1,0 +1,233 @@
+<div class="row" ng-controller="CompInfoController">
+    <div class="col-md-10">
+        <form novalidate name="comp_form" action="/supplier/profile/company/info/" method="post">{% csrf_token %}
+            <input type="hidden" name="user" id="id_user" value="{{user.id}}">
+            <input type="hidden" name="supplier" id="id_supplier" value="{{supplier.id}}">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th width="200"><label for="id_comp_name">* Company Name</label></th>
+                    <td>
+                        <input type="text" id="id_comp_name" name="comp_name" ng-model="comp.comp_name"  ng-minlength="2" ng-maxlength="30" ng-pattern="/^[ a-zA-Z0-9]+$/" class="form-control" value="{[{comp.comp_name}]}" required autocomplete="off">
+
+
+                        <div class="error-msgs" ng-messages="comp_form.comp_name.$error" ng-show="comp_form.$dirty && comp_form.comp_name.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your company name</span>
+                        <span ng-message="minlength" class="label label-danger">Should be at least 2 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 30 characters</span>
+                        <span ng-message="pattern" class="label label-danger">Only alpha characters are accepted</span>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="id_organization_type">Organization Type</label></th>
+                    <td>
+                        <input type="text" id="id_organization_type" name="organization_type" ng-minlength="3" ng-maxlength="30" ng-model="comp.organization_type" class="form-control" placeholder="Please put 'N/A' if no value available" value="{[{comp.organization_type}]}" autocomplete="off">
+
+                        <div class="error-msgs" ng-messages="comp_form.organization_type.$error" ng-show="comp_form.$dirty && comp_form.organization_type.$touched">
+                        <span ng-message="required" class="label label-warning">Please select organization type.</span>
+                        <span ng-message="minlength" class="label label-danger">Should be at least 3 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 30 characters</span>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="id_doing_business_as">Doing Business As</label></th>
+                    <td>
+                        <input type="text" id="id_doing_business_as" name="doing_business_as" ng-minlength="3" ng-maxlength="30" ng-model="comp.doing_business_as" class="form-control" placeholder="Please put 'N/A' if no value available" value="{[{comp.doing_business_as}]}" autocomplete="off">
+
+                         <div class="error-msgs" ng-messages="comp_form.doing_business_as.$error" ng-show="comp_form.$dirty && comp_form.doing_business_as.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your DBA.</span>
+                        <span ng-message="minlength" class="label label-danger">Should be at least 3 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 30 characters</span>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="id_tax_id_number">Federal Tax ID Number</label></th>
+                    <td>
+                        <input type="text" id="id_tax_id_number" name="tax_id_number" ng-minlength="9" ng-maxlength="9" ng-model="comp.tax_id_number" class="form-control" placeholder="Please put 'N/A' if no value available" value="{[{comp.tax_id_number}]}" autocomplete="off">
+
+                         <div class="error-msgs" ng-messages="comp_form.tax_id_number.$error" ng-show="comp_form.$dirty">
+                        <span ng-message="required" class="label label-warning">Please enter your federal tax ID.</span>
+                        <span ng-message="minlength" class="label label-danger">Should be at least 8 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 10 characters</span>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="id_social_security_number">Social Security Number</label></th>
+                    <td>
+                        <input type="text" id="id_social_security_number" name="social_security_number" ng-minlength="3" ng-model="comp.social_security_number" class="form-control"  placeholder="Please put 'N/A' if no value available" value="{[{comp.social_security_number}]}" autocomplete="off">
+
+                         <div class="error-msgs" ng-messages="comp_form.social_security_number.$error" ng-show="comp_form.$dirty && comp_form.social_security_number.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your social security number.</span>
+                        <span ng-message="minlength" class="label label-danger">Should be at least 3 characters</span>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="id_comp_dunn_street">Dunn & Brad Street Number</label></th>
+                    <td>
+                        <input type="text" id="id_comp_dunn_street" name="comp_dunn_street" ng-minlength="9" ng-maxlength="9" ng-model="comp.comp_dunn_street" class="form-control"  placeholder="Please put 'N/A' if no value available" value="{[{comp.comp_dunn_street}]}" autocomplete="off">
+
+                        <div class="error-msgs" ng-messages="comp_form.comp_dunn_street.$error" ng-show="comp_form.$dirty && comp_form.comp_dunn_street.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your DunB number.</span>
+                        <span ng-message="minlength" class="label label-danger">Should be at least 8 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 10 characters</span>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="id_comp_phone">Company Phone Number</label></th>
+                    <td>
+                        <input type="text" id="id_comp_phone" name="comp_phone" ng-pattern="/^(?:1-?)?(\d{3})[-\.]?(\d{3})[-\.]?(\d{4})$/" ng-model="comp.comp_phone" class="form-control" value="{[{comp.comp_phone}]}"  autocomplete="off">
+
+                       <div class="error-msgs" ng-messages="comp_form.comp_phone.$error" ng-show="comp_form.$dirty && comp_form.comp_phone.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your company phone number</span>
+                        <span ng-message="pattern" class="label label-danger">Phone numbers must be in XXX-XXX-XXXX format.</span>
+
+                    </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="id_comp_fax">Company Fax Number</label></th>
+                    <td>
+					<textarea id="id_comp_fax" name="comp_fax"  placeholder="Please put 'N/A' if no value available" ng-pattern="/^(?:1-?)?(\d{3})[-\.]?(\d{3})[-\.]?(\d{4})$/" ng-model="comp.comp_fax" class="form-control" value="{[{comp.comp_fax}]}" autocomplete="off">
+						
+					</textarea>
+                         <div class="error-msgs" ng-messages="comp_form.comp_fax.$error" ng-show="comp_form.$dirty && comp_form.comp_fax.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your company fax number</span>
+                        <span ng-message="pattern" class="label label-danger">Phone numbers must be in XXX-XXX-XXXX format.</span>
+
+                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="id_corporate_email">* Corporate Email</label></th>
+                    <td>
+                        <input type="email" id="id_corporate_email" name="corporate_email" ng-model="comp.corporate_email" class="form-control" value="{[{comp.corporate_email}]}" required autocomplete="off">
+
+
+                        <div class="form-group" class="has-error" ng-messages="comp_form.corporate_email.$error" ng-show="comp_form.$dirty && comp_form.corporate_email.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your company email id</span>
+                        <span ng-message="email" class="label label-danger">This needs to be a valid email</span>
+                    </div>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <th><label for="id_comp_url">Company Website</label></th>
+                    <td>
+                        <input type="url" id="id_comp_url" name="comp_url" ng-model="comp.comp_url" class="form-control" value="{[{comp.comp_url}]}" autocomplete="off">
+
+                      <div class="form-group" class="has-error" ng-messages="comp_form.comp_url.$error" ng-show="comp_form.$dirty && comp_form.comp_url.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your company website url.</span>
+                        <span ng-message="url" class="label label-warning">Please a valid url, format: http://WWW.XXXX.XX</span>
+                    </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th><label for="id_year_established">Year Established</label></th>
+                    <td>
+                        <input type="text" id="id_year_established" name="year_established" ng-model="comp.year_established" class="form-control datetime"  placeholder="Please put 'N/A' if no value available" value="{[{comp.year_established}]}" autocomplete="off">
+                        <div ng-show="comp_form.$dirty && comp_form.year_established.$error.required && comp_form.year_established.$touched">
+                            <p  class="bg-warning">Please enter your company start date/year.</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="id_num_of_employees">Number of Employees</label></th>
+                    <td>
+                        <input type="text" id="id_num_of_employees" name="num_of_employees" class="form-control"  placeholder="Please put 'N/A' if no value available" ng-model="comp.num_of_employees" value="{[{comp.num_of_employees}]}" autocomplete="off">
+                        <div ng-show="comp_form.$dirty && comp_form.num_of_employees.$error.required && comp_form.num_of_employees.$touched">
+                            <p  class="bg-warning">Please enter your company employee range.</p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th colspan="2" class="bg-danger">
+                        Company Capability Statement
+                    </th>
+                </tr>
+                <tr>
+                    <th><label for="id_capability_statement">Statement</label></th>
+                    <td>
+					<textarea id="id_capability_statement" name="capability_statement" ng-model="comp.capability.capability_statement" class="form-control" placeholder="Please put 'N/A' if no value available" autocomplete="off">
+						{[{comp.capability.capability_statement}]}
+					</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="id_upload_doc">Upload Document</label></th>
+                    <td>
+                        <input id="id_upload_doc" name="upload_doc" type="file" value="{[{capability.upload_doc}]}">
+                        <a href="" ng-show="capability.upload_doc">x</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="id_upload_video">Upload Video</label>
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input id="id_upload_video" name="upload_video" type="text" value="{[{capability.upload_video}]}" class="form-control" autocomplete="off">
+						<span class="input-group-btn">
+				        	<button class="btn btn-danger" type="button">Show Video</button>
+				      	</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2" class="bg-danger">
+                        Company Product & Service Categories
+                    </th>
+                </tr>
+                <tr>
+                    <th><label for="id_product_service_description">Product & Service Description</label></th>
+                    <td>
+					<textarea id="id_product_service_description" name="product_service_description" class="form-control" ng-model="comp.product_service_description"  placeholder="Please put 'N/A' if no value available" autocomplete="off">
+						{[{comp.product_service_description}]}
+					</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="id_product_service_description">* Product & Service Category</label></th>
+                    <td>
+                        <select id='pre-selected-options' multiple='multiple' name="ps_categories" ng-model="comp.categories">
+                            <option value="-1">None</option>
+                            {% for cat in ps_categories %}
+                                <option value="{{cat.id}}" {% if cat in selected_categories %} selected {% endif %}>{{cat}}</option>
+                            {% endfor %}
+                        </select>
+
+                     <div class="form-group" class="has-error" ng-messages="comp_form.ps_categories.$error" ng-show="comp_form.$dirty && comp_form.ps_categories.$touched">
+                        <span ng-message="required" class="label label-warning">Please select your company categories.</span>
+                    </div>
+                    </td>
+                </tr>
+
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="2">
+                        <button class="btn btn-primary" ng-disabled="comp_form.$invalid">Save & Continue</button>
+                    </th>
+                </tr>
+                </tfoot>
+
+            </table>
+        </form>
+    </div>
+</div>
+

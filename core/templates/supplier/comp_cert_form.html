@@ -1,0 +1,55 @@
+<table class="table certificate" ng-controller="CompCertController">
+<form method="post" action="/supplier/profile/company/certification/" enctype="multipart/form-data">{% csrf_token %}
+<input type="hidden" name="supplier" id="id_supplier" value="{{supplier.id}}">
+<thead>
+	<tr>
+		<th class="bg-primary">S.No</th>
+		<th class="bg-primary">Certification Description</th>
+		<th class="bg-primary">Cert. Number</th>
+		<th class="bg-primary">Category</th>
+		<th class="bg-primary">Cert Date</th>
+		<th class="bg-primary">Expiration Date</th>
+		<th class="bg-primary" width="100">How many years have you had this certification?</th>
+		<th class="bg-primary">Upload certification</th>
+	</tr>
+</thead>
+
+<tbody id="cert_list">
+	
+	<input type="hidden" name="company" value="{{company_id}}">
+	{% for cert in cert_names %}
+	<tr style="border-bottom: 2px solid #DDD;" id="{{cert.id}}">
+		<td>
+			{{cert.id}}
+			<input type="hidden" name="certificate_name" value="{{cert.id}}">
+		</td>
+		<td width="200">
+			{{cert.cert_name}}
+		</td>
+		<td><input type="text" name="cert_number" class="form-control" value=""></td>
+		<td><input type="text" name="category" class="form-control" value=""></td>
+		<td>
+			<input type="text" name="certification_date" class="form-control datetime" value="">
+		</td>
+		<td><input type="text" name="expire_date" class="form-control datetime" value=""></td>
+		<td>
+			<input type="text" name="certificate_duration" class="form-control" value="">
+		</td>
+		<td>
+			<input type="file" name="upload_certificate_{{forloop.counter0}}" value="no">
+			<span class="file_name"></span>
+		</td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td colspan="8">
+			<button class="btn btn-primary">Submit & Continue</button>
+		</td>
+	</tr>
+	
+</tbody>
+
+	
+
+</form>
+</table>

@@ -1,0 +1,216 @@
+<div class="row" ng-controller="CompContactController">
+<div class="col-md-10">
+	<form noviolate name="comp_contact_form" action="/supplier/profile/company/contacts/" method="post">{% csrf_token %}
+	<input type="hidden" name="user" id="id_user" value="{{user.id}}">
+	<input type="hidden" name="supplier" id="id_supplier" value="{{supplier.id}}">
+	<input type="hidden" name="company" id="id_company" value="{{company.id}}">
+	<table class="table">
+		<tr>
+			<td>
+				<p class="bg-info" style="padding:5px;">Company Contacts</p>
+			</td>
+		</tr>
+	</table>
+		<table class="table">
+		<tbody id="company_contact">
+			<tr>
+				<th width="250">
+					<label for="id_name">* Contact Name</label>
+				</th>
+				<td>
+					<input type="text" class="form-control" name="contact_name" id="id_contact_name" ng-minlength="3" ng-maxlength="20" ng-pattern="/^[ a-zA-Z0-9]+$/" ng-model="comp_contact.contact_name" value="{[{comp_contact.contact_name}]}" required autocomplete="off">
+
+					<div class="error-msgs" ng-messages="comp_contact_form.contact_name.$error" ng-show="comp_contact_form.$dirty && comp_contact_form.contact_name.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter contact name</span>
+                        <span ng-message="minlength" class="label label-danger">Should be at least 3 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 20 characters</span>
+                        <span ng-message="pattern" class="label label-danger">Only alpha characters are accepted</span>
+                    </div>
+
+				</td>
+				
+			</tr>
+			<tr>
+				<th width="250">
+					<label for="id_title">* Contact Title</label>
+				</th>
+				<td>
+					<input type="text" class="form-control" name="contact_title" ng-minlength="3" ng-maxlength="20" ng-pattern="/^[ a-zA-Z0-9]+$/" id="id_contact_title" ng-model="comp_contact.contact_title" value="{[{comp_contact.contact_title}]}" required autocomplete="off">
+
+                    <div class="error-msgs" ng-messages="comp_contact_form.contact_title.$error" ng-show="comp_contact_form.$dirty && comp_contact_form.contact_title.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter contact title</span>
+                        <span ng-message="minlength" class="label label-danger">Should be at least 3 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 20 characters</span>
+                        <span ng-message="pattern" class="label label-danger">Only alpha characters are accepted</span>
+                    </div>
+				</td>
+				
+			</tr>
+
+			<tr>
+				<th width="250">
+					<label for="id_phone">* Contact Phone</label>
+				</th>
+				<td>
+					<table class="table innertable">
+						<tr>
+							<td width="70%">
+								<input type="text" class="form-control" name="contact_phone"  ng-pattern="/^(?:1-?)?(\d{3})[-\.]?(\d{3})[-\.]?(\d{4})$/" id="id_contact_phone" ng-model="comp_contact.contact_phone" value="{[{comp_contact.contact_phone}]}" required autocomplete="off">
+
+
+                                <div class="error-msgs" ng-messages="comp_contact_form.contact_phone.$error" ng-show="comp_contact_form.$dirty && comp_contact_form.contact_phone.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter contact phone.</span>
+                        <span ng-message="pattern" class="label label-danger">Phone numbers must be in XXX-XXX-XXXX format.</span>
+                    </div>
+							</td>
+							<td>
+								Ext.
+							</td>
+							<td>
+								<input type="number" class="form-control" name="contact_phone_ext" ng-maxlength="5" id="id_phone_ext" ng-model="comp_contact.contact_phone_ext" value="{[{comp_contact.contact_phone_ext}]}" autocomplete="off">
+
+                                <div class="error-msgs" ng-messages="comp_contact_form.contact_phone_ext.$error" ng-show="comp_contact_form.$dirty && comp_contact_form.contact_phone_ext.$touched">
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 5 characters</span>
+                        <span ng-message="number" class="label label-danger">Only numbers.</span>
+                    </div>
+							</td>
+						</tr>
+					</table>
+					
+				</td>
+				
+			</tr>
+
+			<tr>
+				<th width="250">
+					<label for="id_fax">Fax</label>
+				</th>
+				<td>
+					<input type="text" class="form-control" name="contact_fax" id="id_contact_fax" ng-model="comp_contact.contact_fax" ng-pattern="/^(?:1-?)?(\d{3})[-\.]?(\d{3})[-\.]?(\d{4})$/" value="{[{comp_contact.contact_fax}]}" autocomplete="off">
+
+                    <div class="error-msgs" ng-messages="comp_contact_form.contact_fax.$error" ng-show="comp_contact_form.$dirty && comp_contact_form.contact_fax.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter fax number.</span>
+                        <span ng-message="pattern" class="label label-danger">Phone numbers must be in XXX-XXX-XXXX format.</span>
+                    </div>
+
+				</td>
+				
+			</tr>
+			<tr>
+				<th><label for="id_contact_email">* Email</label></th>
+				<td>
+					<input type="email" id="id_contact_email" name="contact_email" ng-model="comp_contact.contact_email" class="form-control" value="{[{comp_contact.contact_email}]}" required autocomplete="off"> 
+						
+						 <div class="form-group" class="has-error" ng-messages="comp_contact_form.contact_email.$error" ng-show="comp_contact_form.$dirty && comp_contact_form.contact_email.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter your company email id</span>
+                        <span ng-message="email" class="label label-danger">This needs to be a valid email</span>
+                    </div>
+
+				</td>
+			</tr>
+			</tbody>
+			</table>
+			<table class="table">
+				<tr>
+					<td>
+						<p class="bg-info" style="padding:5px;">Reference</p>
+					</td>
+				</tr>
+			</table>
+			<table class="table">
+				<tr>
+					<th width="250">
+						<label for="id_ref_company_name">Company Name</label>
+					</th>
+					<td>
+						<input type="text" class="form-control" name="ref_company_name" id="id_ref_company_name" ng-minlength="2" ng-maxlength="20" ng-pattern="/^[ a-zA-Z0-9]+$/" ng-model="comp_reference.ref_company_name" value="{[{comp_reference.ref_company_name}]}" autocomplete="off">
+
+
+                        <div class="error-msgs" ng-messages="comp_contact_form.ref_company_name.$error" ng-show="comp_contact_form.$dirty && comp_contact_form.ref_company_name.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter company name</span>
+                        <span ng-message="minlength" class="label label-danger">Should be at least 3 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 20 characters</span>
+                        <span ng-message="pattern" class="label label-danger">Only alpha characters are accepted</span>
+                    </div>
+					</td>
+					
+				</tr>
+
+				<tr>
+					<th width="250">
+						<label for="id_ref_contact_name">Contact Name</label>
+					</th>
+					<td>
+						<input type="text" class="form-control" name="ref_contact_name" id="id_ref_contact_name" ng-minlength="2" ng-maxlength="20" ng-pattern="/^[ a-zA-Z0-9]+$/" ng-model="comp_reference.ref_contact_name" value="{[{comp_reference.ref_contact_name}]}" autocomplete="off">
+						
+					  <div class="error-msgs" ng-messages="comp_contact_form.ref_contact_name.$error" ng-show="comp_contact_form.$dirty && comp_contact_form.ref_contact_name.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter contact name</span>
+                        <span ng-message="minlength" class="label label-danger">Should be at least 3 characters</span>
+                        <span ng-message="maxlength" class="label label-danger">Should be less than 20 characters</span>
+                        <span ng-message="pattern" class="label label-danger">Only alpha characters are accepted</span>
+                    </div>
+					</td>
+					
+				</tr>
+
+				<tr>
+					<th width="250">
+						<label for="id_phone">Phone</label>
+					</th>
+					<td>
+						<input type="text" class="form-control" name="ref_phone" id="id_ref_phone" ng-pattern="/^(?:1-?)?(\d{3})[-\.]?(\d{3})[-\.]?(\d{4})$/" ng-model="comp_reference.ref_phone" value="{[{comp_reference.ref_phone}]}" autocomplete="off">
+
+                  <div class="error-msgs" ng-messages="comp_contact_form.ref_phone.$error" ng-show="comp_contact_form.$dirty && comp_contact_form.ref_phone.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter phone number.</span>
+                        <span ng-message="pattern" class="label label-danger">Phone numbers must be in XXX-XXX-XXXX format.</span>
+                    </div>
+
+
+					</td>
+					
+				</tr>
+
+				<tr>
+					<th width="250">
+						<label for="id_ref_email">Email</label>
+					</th>
+					<td>
+						<input type="email" class="form-control" name="ref_email" id="id_ref_email" ng-model="comp_reference.ref_email" value="{[{comp_reference.ref_email}]}" autocomplete="off">
+
+                        <div class="form-group" class="has-error" ng-messages="comp_contact_form.ref_email.$error" ng-show="comp_contact_form.$dirty && comp_contact_form.ref_email.$touched">
+                        <span ng-message="required" class="label label-warning">Please enter an email id</span>
+                        <span ng-message="email" class="label label-danger">This needs to be a valid email</span>
+                    </div>
+
+
+
+
+					</td>
+					
+				</tr>
+
+				<tr>
+					<th width="250">
+						<label for="id_services_provided">Service Provided</label>
+					</th>
+					<td>
+						<input type="text" class="form-control" name="ref_services_provided" id="id_ref_services_provided" ng-model="comp_reference.ref_services_provided" value="{[{comp_reference.ref_services_provided}]}" autocomplete="off"> 
+						<div ng-show="comp_contact_form.$dirty && comp_contact_form.ref_services_provided.$error.required && comp_contact_form.ref_services_provided.$touched">
+							<p  class="bg-warning">Please enter the service provided</p>
+						</div>
+					</td>
+					
+				</tr>
+			</table>
+
+		<table class="table">
+			<tr>
+				<th colspan="2">
+					<button class="btn btn-primary" ng-disabled="comp_contact_form.$invalid">Save & Continue</button>
+				</th>
+			</tr>
+
+		</table>
+	</form>
+</div>
+</div>

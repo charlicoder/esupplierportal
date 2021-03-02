@@ -1,0 +1,129 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+@font-face {
+	font-family: 'segoeuil';
+	src: url('./segoeuil.eot');
+	src: local('segoeuil'), url('./segoeuil.woff') format('woff'), url('./segoeuil.ttf') format('truetype');
+}
+
+@font-face{
+	font-family:"Segoe UI Light";
+	src:url("http://www.myfontfree.com/data/541/s/segoeuilight/segoeuil.ttf");
+}
+
+.head_box {
+	padding: 5em 0;
+	text-align: center;
+}
+.head_box h1 {
+	font-size: 6em;
+	color: #F19300;
+	font-family: 'segoeuil';
+
+}
+.head_box h2 {
+	font-family: 'segoeuil';
+	color: #F19300;
+}
+.head_box span {
+	background: #f19300 none repeat scroll 0 0;
+	border-radius: 100%;
+	color: #fff;
+	font-size: 28px;
+	padding: 2em 2em;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+.offer {
+	margin-top: 78px;
+}
+#packages {
+	background: #f0f0f0 none repeat scroll 0 0;
+	text-align: center;
+}
+.pack_head {
+	color: #f19300;
+	font-family: 'segoeuil';
+	padding: 25px 0;
+}
+.pack_name {
+	background: #f19300 none repeat scroll 0 0;
+	color: #fff;
+	font-family: 'segoeuil';
+	padding: 25px 30px;
+	border-top-right-radius: 6px;
+	border-top-left-radius: 6px;
+}
+#pack_box {
+	background: #fff none repeat scroll 0 0;
+	border-radius: 6px;
+	box-shadow: 0 2px 4px 1px #cccccc;
+	margin-bottom: 25px;
+}
+.pack_icon img {
+	padding: 25px 12px;
+}
+.pack_desc {
+	color: #848484;
+	padding: 1px 25px 13px;
+	text-align: left;
+}
+.price {
+	color: #f19300;
+	margin: 0;
+	font-family: 'Roboto Condensed', sans-serif;
+	padding: 15px 18px;
+}
+.action_lbl {
+	padding: 65px 20px;
+	text-align: center;
+}
+.action_lbl > span {
+	border: 2px solid #f19300;
+	border-radius: 10px;
+	color: #f19300;
+	font-size: 30px;
+	padding: 13px 25px;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+.action_lbl > h2 {
+	color: #f19300;
+	font-weight: bold;
+	padding: 25px 0;
+}
+.action_lbl a {
+	background: #f19300 none repeat scroll 0 0;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 19px;
+	padding: 20px 82px;
+}
+.action_lbl a:hover {
+	text-decoration: none;
+}
+#footer {
+	background: #383838 none repeat scroll 0 0;
+	color: #939393;
+	margin: 0;
+	padding: 18px 5px;
+	text-align: center;
+}
+#footer p{
+	margin: 0;
+}		
+
+@media only screen and (max-width:480px){
+	.head_box span {
+		font-size: 20px;
+		padding: 1.5em;
+	}
+	.head_box h1 {
+  font-size: 4em;
+}
+.action_lbl > span {
+  font-size: 17px;
+  padding: 13px 25px;
+}
+.action_lbl a {
+  font-size: 19px;
+  padding: 20px 32px;
+}
+}

@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block container %}
+	{% include "steps.html" %}
+	{% include "supplier/form/license_certificate_form.html" %}	
+{% endblock %}
+
+{% block page_js %}
+<script type="text/javascript">
+
+pr.controller('CompLicenseController',['$scope', '$http', function ($scope, $http) {
+    $scope.init = function(){
+        console.log("Supplier Company license controller...");
+        var sup_id = $("#id_supplier").val();
+        var url = "/supplier/profile/company/licenses/api/"+sup_id+"/";
+        
+        $http({method: 'GET', url: url}).
+            success(function(data, status, headers, config) {
+                console.log(data);
+                $scope.comp_license = data;
+                if ($scope.comp_license.business_license) {
+                    $scope.show_file_name = true;
+                }
+                var geo_area_list = data.geographical_service_area.split(" ");
+                for(i=0; i<geo_area_list.length; i++) {
+                    var area = geo_area_list[i];
+                    
+                    var stick = $("#id_geographical_service_area").find('input[value="'+area+'"]').prop("checked", true);
+                }
+
+        }).error(function() {
+            console.log("no company info");
+        });
+        
+        cert={
+            'title': '',
+            'description': ''
+        };
+        $scope.certificate_list = [];
+        $scope.certificate_list.push(cert);
+        // certificate_list.push(cert);
+        $scope.certificates = $scope.certificate_list;
+
+    }
+
+    $scope.init();
+
+    $scope.addMoreCert = function() {
+        cert = {
+
+        }
+        $scope.certificate_list.push(cert);
+        $scope.certificates = $scope.certificate_list;
+    }
+
+    $scope.removeLicense = function() {
+        $scope.comp_license.business_license = '';
+        $scope.show_file_name = false;
+    }
+
+}]);
+
+</script>
+{% endblock %}

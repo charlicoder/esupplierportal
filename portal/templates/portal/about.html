@@ -1,0 +1,107 @@
+{% extends 'portal/base/body.html' %}
+
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.5
+Version: 4.5.1
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+    <!--<![endif]-->
+    <!-- BEGIN HEAD -->
+
+{% block extra_css %}
+      <link href="{{ STATIC_URL }}portal/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
+{% endblock extra_css %} 
+	</head>
+    <!-- END HEAD -->
+{% block body_content %}
+{% block body %}
+{% block page_container %}
+    <body class="{% block body_classes %} page-container-bg-solid page-boxed page-md {% endblock body_classes %}">
+    <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN CONTENT -->
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <!-- BEGIN PAGE CONTENT BODY -->
+                <div class="page-content">
+					<div class="showcase text-center">
+						<div class="container">
+                            <div class="row margin-bottom-40">
+                                <div class="col-md-12">
+                                    <h2>About Us</h2>
+                                    <p class="no-margin">We exist to help corporations, buyers, sellers and make what you want.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <div class="container">
+                        <!-- BEGIN PAGE CONTENT INNER -->
+                        <div class="page-content-inner">
+                            <!-- BEGIN CARDS -->
+							<div class="row margin-bottom-20">
+								<div class="col-lg-12">
+                                    <h2 class="text-center">Our Mission </h2>
+                                    <p>eSupplier Portal believes that Buyers and Suppliers should have easy, online access to developing and sustaining relationships. Procurement Registration's mission is to give small and large corporations, organizations, and other entities a path to forge these working relationships and to allow them to continue to grow</p>
+								</div>
+							</div>
+                            <div class="row margin-bottom-20">
+                                <div class="col-xs-12 stories-cont">
+                                    <div class="portlet light">
+										<div class="photo">
+                                            <img src="{{ STATIC_URL }}portal/images/ben-fatola.jpg" alt="" class="img-responsive"> </div>
+                                        <div class="card-title">
+                                            <span> A letter from our founder </span>
+                                        </div>
+                                        <div class="card-desc">
+                                            <p class="text-left">eSupplier Portal was founded upon the premise that Buyers and Suppliers need an expedient, accurate way to develop relationships with one another. Business relationships are not unlike personal relationships: they can be difficult and fragile if not handled with care. Procurement Registration takes the guesswork out of building these new relationships so that both Buyers and Suppliers can concentrate on their own areas of expertise and can leave the business of building new business relationships to us.</p>
+											<p class="text-left">eSupplier Portal is the only Business Intelligence Application and Platform for Suppliers and Buyers to utilize, discover and do business with each other.</p>
+											<p class="text-left">eSupplier Portal simplifies the Corporate Buying Portal Registration Process for Suppliers.</p>
+											<p class="text-left">With one single Supplier Registration on eSupplier Portal you and your company is now in our system and can be found by Corporate Buyers. With one single Supplier Registration, Suppliers can register on hundreds of Corporate Buying Portals (via ProReg Assisted Submission). You can update, change your details, and you can choose exactly which Corporate Buyers you want to target at any time!</p>
+											<p class="text-left">Best,</p>
+											<p class="text-left"><b>Ben Fatola</b><br />
+											Procurement Registration Founder & CEO</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END CARDS -->
+							
+                        </div>
+                        <!-- END PAGE CONTENT INNER -->
+                    </div>
+					<div class="cta-bottom bg-orange">
+						<div class="container">
+							<div class="col-sm-9 col-xs-12 color-white">
+								<h4>Ready to connect with your buyers using eSupplier Portal</h4>
+							</div>
+							<div class="col-sm-3 col-xs-12">
+								<button type="button" class="btn btn-lg btn-default">GET STARTED</button>
+							</div>
+						</div>
+					</div>
+                </div>
+                <!-- END PAGE CONTENT BODY -->
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+        </div>
+        <!-- END CONTAINER -->
+{% endblock page_container %}
+{% endblock body %}
+{% endblock body_content %}
+        
+        
+            </body>
+
+</html>

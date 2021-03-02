@@ -1,0 +1,189 @@
+{% extends 'portal/base/body.html' %}
+<!DOCTYPE html>
+<html lang="en">
+ {% block extra_css %}
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>eSupplier</title>
+
+    <!-- Bootstrap -->
+    <link href="{{ STATIC_URL }}pricing/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}pricing/css/custom.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+{% endblock extra_css %} 
+{% block body_content %}
+{% block body %}
+{% block page_container %}
+    <section id="banner">
+         <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="head_box">
+            <h1><b>PRE </b>- LAUNCH PRICING</h1>
+            <h2>Special Pre - Launch Discounted Pricing - <b>Limitted Time Only</b></h2>
+            <div class="offer">
+              <span href="#">Only 20 Spots Available!</span>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </section>
+    <section id="packages">
+      <div class="container">
+        <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <h1 class="pack_head">FEATURES & VALUES</h1>
+        </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <section id="pack_box">
+              <div class="pack_name">
+                <h2>Corporation Directory Search</h2>
+              </div>
+              <div class="pack_icon">
+                <img src="{{ STATIC_URL }}pricing/images/search.png">
+              </div>
+              <div class="pack_desc">
+                Search corporations by name, products and services, industry categories, keywords, NAICS & SIC codes and more. Don't see a corporation? No problem! Simply click, Request Corporation, and we can add it in for you <br><br>
+              </div>
+              <h1 class="price">$3000</h1>
+            </section>
+          </div>
+
+          <!-- 2 -->
+
+           <div class="col-md-4 col-sm-6 col-xs-12">
+            <section id="pack_box">
+              <div class="pack_name">
+                <h2>Personalized Inbox<br><br></h2>
+              </div>
+              <div class="pack_icon">
+                <img src="{{ STATIC_URL }}pricing/images/mailbox.png">
+              </div>
+              <div class="pack_desc">
+               You get your own personal email and inbox within our system. Many corporations require unique login information. This feature eliminates the hassle of keeping track of login data by storing all your logins securely in one inbox <br><br>
+              </div>
+              <h1 class="price">$1500</h1>
+            </section>
+          </div>
+
+          <!-- 3 -->
+
+           <div class="col-md-4 col-sm-6 col-xs-12">
+            <section id="pack_box">
+              <div class="pack_name">
+                <h2>Seamless Submissions <br><br></h2>
+              </div>
+              <div class="pack_icon">
+                <img src="{{ STATIC_URL }}pricing/images/success.png">
+              </div>
+              <div class="pack_desc">
+                Our world-class automated system requires you to fill out your information just one time, whether you want to apply to five corporations or a hundred! If any corporation requests additional information we'll notify you instantly and submit the data for you.
+              </div>
+              <h1 class="price">$10000</h1>
+            </section>
+          </div>
+
+     
+        </div>
+
+        <div class="row">
+               <!-- 4 -->
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+            <section id="pack_box">
+              <div class="pack_name">
+                <h2>Business Opportunity Finder</h2>
+              </div>
+              <div class="pack_icon">
+                <img src="{{ STATIC_URL }}pricing/images/finder.png">
+              </div>
+              <div class="pack_desc">
+                Be the first to get instantly notified when a new federal bid, government contract or request for proposal (RFP) is released. Our cutting-edge technology pulls data from leading RFP portals and allows you to filter opportunities best suited to you, enabling you to be at the right place at the right time when the perfect opportunity presents itself.
+              </div>
+              <h1 class="price">$7500</h1>
+            </section>
+          </div>
+
+          <!-- 5 -->
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+            <section id="pack_box">
+              <div class="pack_name">
+                <h2>Research Tool <br><br></h2>
+              </div>
+              <div class="pack_icon">
+                <img src="{{ STATIC_URL }}pricing/images/settings.png">
+              </div>
+              <div class="pack_desc">
+                Get in depth research about any corporation of your choice including annual revenue, products and services, operating countries, mission statements, future forecasting and more giving you the upper hand in business matchmaking meetings and discovering procurement opportunities. <br><br>
+              </div>
+              <h1 class="price">$2500</h1>
+            </section>
+          </div>
+
+          <!-- 6 -->
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+            <section id="pack_box">
+              <div class="pack_name">
+                <h2>Expert Office Hours <br><br></h2>
+              </div>
+              <div class="pack_icon">
+                <img src="{{ STATIC_URL }}pricing/images/clock.png">
+              </div>
+              <div class="pack_desc">
+                Stay on top of your game with educational webinars by industry experts, category managers, corporate buyers, consultants and more! Join live webinars, ask questions, or view recorded webinars on your own time - get the training you need to grow your business!  <br><br><br>
+              </div>
+              <h1 class="price">$5000</h1>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="actions">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <section class="action_lbl">
+              <span>
+                TOTAL: $29,500 VALUE!
+              </span>
+              <h2>$2500 (Limited Time Only!)</h2>
+             <div style="margin-top: 28px;">
+             	<a href="{% url 'subscriber:registration' %}" id="register-btn" class="uppercase">REGISTER NOW</a>
+               <p style="margin-top: 22px; color: rgb(160, 160, 160);">Billed Anually</p>
+              </div>
+              
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+           <p>  Have questions? Don't hesitate to contact us at: help@esupplierportal.com</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ STATIC_URL }}pricing/js/bootstrap.min.js"></script>
+{% endblock page_container %}
+{% endblock body %}
+{% endblock body_content %}
+</html>

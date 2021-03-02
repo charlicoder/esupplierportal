@@ -1,0 +1,122 @@
+{% extends 'subscriber/base.html' %}
+
+{% block title %}eSupplier | User Login{% endblock title %}
+{% block body_classes %}login{% endblock body_classes %}
+
+{% block extra_css %}
+    <link href="{{ STATIC_URL }}subscriber/assets/pages/login.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}subscriber/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}subscriber/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="{{ STATIC_URL }}subscriber/assets/css/pricing-table.css" rel="stylesheet" type="text/css" />
+{% endblock extra_css %}
+
+
+{% block body %}
+    <div class="menu-toggler sidebar-toggler"></div>
+    <!-- END SIDEBAR TOGGLER BUTTON -->
+    <!-- BEGIN LOGO -->
+    <div class="logo">
+        <a href="{% url 'home' %}">
+            <img src="{{ STATIC_URL }}subscriber/assets/images/logo.png" alt="" /> </a>
+    </div>
+    <!-- END LOGO -->
+    <!-- BEGIN LOGIN -->
+    <div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<!-- BEGIN INLINE NOTIFICATIONS PORTLET-->
+					<div class="portlet light">
+						<div class="portlet-title">
+                            <h3 class="text-center">Register on 100+ Corporation Portals with One Submission!</h3>
+							<div class="caption">
+
+								<p><i class="fa fa-expeditedssl"></i> Secure payment <img src="{{ STATIC_URL }}subscriber/assets/images/solid.png"></p>
+							</div>
+
+
+						</div>
+						<div class="portlet-body">
+							<div class="row margin-bottom-40">
+                                {% for package in packages %}
+								<div class="col-md-4">
+									<div class="pricing {%if package.featured %}pricing-active{% endif %} hover-effect">
+										<div class="pricing-head">
+											<h3>{{package.package_name}} <span>
+											{{ package.short_description }} </span>
+											</h3>
+											<h4><i>$</i>5<i>.49</i>
+											<span>
+											Per Month </span>
+											</h4>
+										</div>
+										<ul class="pricing-content list-unstyled">
+                                            {% for service in package.services.all %}
+											<li style="cursor:help;">
+												<i class="{{ service.icon }}"></i> {{ service.name }}
+											</li>
+											{% endfor %}
+										</ul>
+										<div class="pricing-footer">
+											<p>
+                                                {{ package.long_description}}
+											</p>
+											<a href="javascript:;" class="btn yellow-crusta">
+											Buy Now <i class="m-icon-swapright m-icon-white"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+                                {% endfor %}
+
+<!--
+								<div class="col-md-4">
+									<div class="pricing pricing-active hover-effect">
+										<div class="pricing-head pricing-head-active">
+											<h3>Expert <span>
+											Officia deserunt mollitia </span>
+											</h3>
+											<h4><i>$</i>13<i>.99</i>
+											<span>
+											Per Month </span>
+											</h4>
+										</div>
+										<ul class="pricing-content list-unstyled">
+											<li>
+												<i class="fa fa-tags"></i> At vero eos
+											</li>
+											<li>
+												<i class="fa fa-asterisk"></i> No Support
+											</li>
+											<li>
+												<i class="fa fa-heart"></i> Fusce condimentum
+											</li>
+											<li>
+												<i class="fa fa-star"></i> Ut non libero
+											</li>
+											<li>
+												<i class="fa fa-shopping-cart"></i> Consecte adiping elit
+											</li>
+										</ul>
+										<div class="pricing-footer">
+											<p>
+												 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna psum olor .
+											</p>
+											<a href="javascript:;" class="btn yellow-crusta">
+											Buy Now <i class="m-icon-swapright m-icon-white"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+-->
+
+							</div>
+						</div>
+                        <hr>
+                        <h5><i class="fa fa-question-circle"></i> Do you have some other question? Don't hesitate to contact us at: help@esupplierportal.com</h5>
+					</div>
+
+
+				</div>
+			</div>
+
+{% endblock body %}
+

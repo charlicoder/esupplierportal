@@ -1,0 +1,44 @@
+<table class="table" ng-controller="SubpplierSubmissionController">
+<thead>
+	<tr>
+		<th>Buyer ID</th>
+		<th>Buyer Name</th>
+		<th>Selection Date</th>
+		<th>Submission Status</th>
+		<th>Submission Date</th>
+	</tr>
+</thead>
+<tbody>
+	{% for buyer in buyers %}
+	<tr class='submission_{% if buyer.get_submission_status == 'Profile Not Complete' %}Error{% else %}{{ buyer.get_submission_status }}{% endif %}'>
+		<td>{{ buyer.buyer.id }}</td>
+		<td>{{ buyer.buyer.company_name }}
+        </td>
+		<td>{{ buyer.selection_date }}</td>
+		<td>
+
+         {% if buyer.get_submission_status == 'Profile Not Complete' %}
+            <span class="label label-danger">
+                {{ buyer.get_submission_status }}
+            </span>
+
+             <div class="alert alert-danger" role="alert" style="margin-top: 3%">
+              <span class="sr-only">Error:</span>
+             <p>{{ buyer.submission_errors|safe }}</p>
+
+            </div>
+             {% else %}
+              {{ buyer.get_submission_status }}
+        {% endif %}
+
+        </td>
+
+		<td>{{ buyer.submission_date|default_if_none:"--" }}</td>
+	</tr>
+	{% empty %}
+	<tr >
+		<td colspan="6">No buyers yet to submission</td>
+	</tr>
+	{% endfor %}
+</tbody>
+</table>

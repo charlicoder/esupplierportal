@@ -1,0 +1,36 @@
+<div class="row" ng-controller="UniqueController">
+<div class="col-md-10">
+{% if que_list %}
+	<form novalidate name="comp_form" action="/supplier/profile/unique-question/" method="post">{% csrf_token %}
+	<input type="hidden" name="user" id="id_user" value="{{user.id}}">
+	<input type="hidden" name="supplier" id="id_supplier" value="{{supplier.id}}">
+		<table class="table">
+		<tbody>
+		{% for que in que_list %}
+			<tr>
+				<th>
+					<label for="id_{{ que.question.id }}">{{ que.question.question }}</label>
+				</th>
+				<td>
+					<input type="text" class="form-control" name="{{ que.question.id }}" id="id_{{ que.question.id }}" value="{{ que.answer }}">
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+		<tfoot>
+			<tr>
+				<th></th>
+				<th align="right">
+					<button class="btn btn-primary">Save & Continue</button>
+				</th>
+			</tr>
+		</tfoot>
+
+		</table>
+	</form>
+{% else %}
+	<p class="alert alert-warning">No more question</p>
+{% endif %}
+</div>
+</div>
+

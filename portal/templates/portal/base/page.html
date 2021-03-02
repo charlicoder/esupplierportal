@@ -1,0 +1,144 @@
+{% extends 'portal/base/body.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link href="{% static 'portal/assets/layouts/layout3/css/layout.min.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'portal/assets/layouts/layout3/css/themes/default.min.css' %}" rel="stylesheet"
+          type="text/css" id="style_color"/>
+    <link href="{% static 'portal/assets/layouts/layout3/css/custom.min.css' %}" rel="stylesheet" type="text/css"/>
+{% endblock extra_css %}
+
+{% block top_wrapper %}
+
+    <div class="page-header">
+        <!-- BEGIN HEADER TOP -->
+        <div class="page-header-top">
+            <div class="container">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <a href="{% url 'portal:home' %}">
+                        <img src="{% static 'portal/assets/images/logo.png' %}" alt="logo" class="logo-default">
+                    </a>
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#Navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+                <!-- BEGIN TOP NAVIGATION MENU -->
+
+                <div class="hor-menu">
+                    <ul id="Navbar" class="nav navbar-nav pull-right collapse navbar-collapse">
+                        <li class="active">
+                            <a href="{% url 'portal:home' %}">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'portal:pricing' %}">Pricing</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'portal:contact' %}">Contact</a>
+                        </li>
+                        <li class="login-top">
+                            {% if request.user.is_authenticated %}
+                                <a class="btn btn-lg" href="{% url 'supplier:dashboard' %}">Dashboard</a>
+                            {% else %}
+                                <a class="btn btn-lg" href="{% url 'subscriber:login' %}">Login</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+                <!-- END TOP NAVIGATION MENU -->
+            </div>
+        </div>
+        <!-- END HEADER TOP -->
+    </div>
+    <div class="showcase text-center">
+        <div class="container">
+            <div class="row margin-bottom-40">
+                <div class="col-md-12">
+                    <h2 class="text-right"><b>You're Just One Click Away From</b></h2>
+
+                    <h2 class="text-right"><b>Registering Your Business on</b></h2>
+
+                    <h2 class="margin-bottom-40 text-right"><b>Hundreds of Corporation Portals!</b></h2>
+
+                    <h3>Create your <b>FREE</b> supplier account now:</h3>
+
+                    <form class="form-inline register-form" role="form" id="register-now"
+                          action="{% url 'subscriber:registration' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="first_name" placeholder="Name"
+                                   autcomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email"
+                                   autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg orange">Free Account</button>
+                            <p>
+                                <small>By clicking 'Free Account' you agree to the ESupplier Portal <a
+                                        href="javascript:;">Terms of Use</a> and <a href="javascript:;">Privacy
+                                    Policy</a>.
+                                </small>
+                            </p>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock top_wrapper %}
+
+{% block page_prefooter %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12 footer-block">
+                <h2>COMPANY</h2>
+                <ul class="nav nav-pills footer-menu">
+                    <li role="presentation"><a href="#">About</a></li>
+                    <li role="presentation"><a href="#">Support</a></li>
+                    <li role="presentation"><a href="#">Blog</a></li>
+                    <li role="presentation"><a href="#">Privacy Policy</a></li>
+                    <li role="presentation"><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs12 footer-block">
+                <h2>SOCIAL</h2>
+                <ul class="social-icons">
+                    <li>
+                        <a href="javascript:;" data-original-title="facebook" class="facebook"></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-original-title="twitter" class="twitter"></a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-original-title="linkedin" class="linkedin"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+                <h2>CONTACT</h2>
+
+                <p><a href="#">enquiries@esupplierportal.com</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock page_prefooter %}
+
+
+{% block page_footer %}
+    <div class="container text-center">
+        <img src="{% static 'portal/assets/images/logo-white.png' %}" alt="logo" class="logo-footer">
+
+        <div>Copyright &copy; 2013 - 2015. eSupplierPortal. All rights reserved. Designed in Arizona. Made all over the
+            world
+        </div>
+    </div>
+{% endblock page_footer %}
